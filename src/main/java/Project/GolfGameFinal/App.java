@@ -18,22 +18,25 @@ static Scanner in = new Scanner (System.in);
     		boolean win =false;
     		double HoleDistance;
     		int NumberOfTries=1;
-    		
     	
 
     		while (running) {
     			
-    			do {
-    				
-    			NumberOfTries = NumberOfTries + 1 ;
-    			
     			HoleDistance=Hole.getHoleDistance();
-
+        		
     			System.out.println(Hole.getHoleDistance() + " Your Target Distance Good Luck :)");
+    			if(NumberOfTries == 0) {
     			
+   				HoleDistance = Hole.getHoleDistance();}
+ 
+    			NumberOfTries = NumberOfTries + 1 ;
+    			do {
+
+    			NumberOfTries++; 
 				System.out.println("enter the shot power");
 				velocity = GetValidNumber.checkValidvalue();
-				
+
+
 				if (velocity >= 300 || velocity <= 5 ) {
 					System.out.println("Wrong Speed please Enter Number between 5 & 300");
 					System.out.println("enter the shot power");
@@ -59,12 +62,9 @@ static Scanner in = new Scanner (System.in);
 			    	total += distance[i];
 				}
 			    
-				System.out.println( "The Ball distance  " + distance[distance.length - 1] + " Total: " + total);
-				
+				System.out.println( "The Ball distance  " + distance[distance.length - 1] + " Total: " + total );
 
-				if (total> HoleDistance ) {
-					System.out.println("Too Much Strong ! ");}
-					
+
 				 if (total < HoleDistance) {
 					System.out.println("Too Much Weak ! ");}
 				 
@@ -74,15 +74,20 @@ static Scanner in = new Scanner (System.in);
 						
 					win=true;}
 				 
-				 NumberOfTries++; 
+					if (total > HoleDistance ) {
+						System.out.println("Too Much Strong Out Of Stadium! ");
+						System.out.println("Do You Want To Play Again ? (Y/N)");
+						String answer = GetPlayAgainAnswer();
+						running = PlayAgain(answer);
+					}
 				 
+
     		}while(!win && NumberOfTries<=5 );
 
 					System.out.println("Do You Want To Play Again ? (Y/N)");
 					String answer = GetPlayAgainAnswer();
 					running = PlayAgain(answer);
-					 
-					
+
 				}
     		
 			return 0;

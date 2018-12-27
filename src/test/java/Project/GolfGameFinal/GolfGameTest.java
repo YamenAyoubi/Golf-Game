@@ -15,7 +15,7 @@ public class GolfGameTest {
 		double expecteddistance = 320;
 		double actual=App.main(Givenvelocity, Givenangle);
 
-		Assert.assertEquals(expecteddistance,actual,0);
+		Assert.assertEquals(expecteddistance,actual,0.1);
 
 }
 }
