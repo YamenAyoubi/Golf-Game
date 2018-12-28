@@ -9,17 +9,21 @@ public class App
 static Scanner in = new Scanner (System.in);
 	
 	
-	public static double  main( double velocity , double angle  )
+	public static void main(String[] args) 
     {
-
+    
+			
     		double []distance = new double [0];
     		double gravity =9.8;
     		boolean running = true;
     		boolean win =false;
     		double HoleDistance;
-    		int NumberOfTries=1;
-    	
-
+    		int NumberOfTries=0;
+    		double total;
+    		int velocity;
+    		int angle;
+    		
+    		
     		while (running) {
     			
     			HoleDistance=Hole.getHoleDistance();
@@ -55,7 +59,7 @@ static Scanner in = new Scanner (System.in);
 				
 			    distance = Store_The_Result.addToArray(distance, (Math.round((Math.pow(velocity, 2) / gravity * Math.sin(2 * angleinradians)) * 10 ) / 10) );
 			    
-			    double total = 0;
+			    total = 0;
 				
 			    for (int i = 0; i < distance.length; i++) {
 					
@@ -72,13 +76,12 @@ static Scanner in = new Scanner (System.in);
 				 if (total == HoleDistance) {
 						System.out.println("Gollllllllllllll!!!!!" + " WOW Lucky Shot! ");
 						
-					win=true;}
+					win=true;
+					
+				 }
 				 
 					if (total > HoleDistance ) {
 						System.out.println("Too Much Strong Out Of Stadium! ");
-						System.out.println("Do You Want To Play Again ? (Y/N)");
-						String answer = GetPlayAgainAnswer();
-						running = PlayAgain(answer);
 					}
 				 
 
@@ -87,13 +90,11 @@ static Scanner in = new Scanner (System.in);
 					System.out.println("Do You Want To Play Again ? (Y/N)");
 					String answer = GetPlayAgainAnswer();
 					running = PlayAgain(answer);
-
-				}
-    		
-			return 0;
-
+					NumberOfTries=0;
+					total=0;
+				}	
     }
-    		
+    	
 	private static boolean PlayAgain(String answer) {
 		String upperCaseString = answer.toUpperCase();
  		switch(upperCaseString) {
@@ -112,6 +113,7 @@ static Scanner in = new Scanner (System.in);
  			return in.nextLine();
  			
  	    }
- 	    
 
+  
 }
+

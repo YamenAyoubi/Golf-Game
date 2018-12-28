@@ -9,8 +9,8 @@ public class Hole {
 	public static int getHoleDistance() {
 
 
-		int MIN = 882;
-		int MAX = 884;
+		int MIN = 1500;
+		int MAX = 2500;
 		int HoleDistance = A.nextInt(MAX-MIN)+MIN;
 		return HoleDistance;
 		
